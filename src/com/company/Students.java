@@ -3,6 +3,8 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Students <T>{
@@ -12,7 +14,7 @@ private String name;
 private int age;
 private String facultet;
 private int kurs;
-
+private List<Students> studentsList = new ArrayList<Students>();
   Students(){}
 
 
@@ -55,6 +57,29 @@ private int kurs;
             System.out.println(e.getMessage());
         }
         return facultet;
+
+
+    }
+    public T getId(){
+      return id;
+    }
+    public int getAge(){
+      return age;
+    }
+    public int getKurs(){
+      return kurs;
+    }
+
+    public void setStudentsList(List<Students> studentsList) {
+        this.studentsList = studentsList;
+    }
+    public List<Students> getStudentsList()
+    {return studentsList;}
+
+    public void printStudentsist()
+    {
+        for(Students x: studentsList)
+            System.out.println(x.getName()+" "+ x.getId() + x.getFacultet() +x.getAge());
     }
 }
 

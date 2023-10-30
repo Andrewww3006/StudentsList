@@ -2,9 +2,7 @@ package com.company;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main{
 
@@ -32,16 +30,53 @@ public class Main{
 
 
         List <Students> studentsList = new ArrayList<Students>();
+        Students students = new Students();
 
-        for (int i = 0; i < 19; i++)
+        Random rd = new Random();
+        for (Integer i = 1; i <= 20; i++)
         {
-            Students student = new Students(i,18, 2);
-            studentsList.add(student);
+            studentsList.add(new Students <Integer>(01,rd.nextInt(25)+18, rd.nextInt(5)+1));
 
         }
         for (Students x: studentsList)
-            System.out.println(x.getName() +" "+ x.getFacultet());
+            System.out.println(x.getName() +" "+ x.getFacultet() + " " + x.getId()
+            + " " + x.getAge() + " " + x.getKurs());
+        students.setStudentsList(studentsList);
+        students.printStudentsist();
+        Scanner sc = new Scanner(System.in);
+        int operation;
+        do {
+            operation = sc.nextInt();
+
+            switch (operation) {
+                case 1:
+
+                    Students <Integer> student = new Students<Integer>(studentsList.size() + 1, rd.nextInt(25) + 18, rd.nextInt(5) + 1);
+                    studentsList.add(student);
+                    System.out.println(student.getName() + " " + student.getFacultet() + " " + student.getId()
+                            + " " + student.getAge() + " " + student.getKurs());
+                    break;
+                case 2:
+                    System.out.println("id?");
+                    Integer id = sc.nextInt();
+                    for (Students x:studentsList) {
+                        if(id==x.getId()) {
+                            System.out.println("remove:" + x.getName() + " " + x.getId());
+                            studentsList.remove(x);
+                            break;
+                        }
+                    }
+                    break;
+                case 6:
+                    //studentsList.printStudentsist();
+                    break;
 
 
+            }
+
+
+
+        }
+        while (operation!=0);
     }
 }
