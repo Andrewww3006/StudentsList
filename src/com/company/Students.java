@@ -20,9 +20,9 @@ private List<Students> studentsList = new ArrayList<Students>();
 
      Students(T id, int age, int kurs) {
         this.id = id;
-        this.name = getName();
+        this.name = null;
         this.age = age;
-        this.facultet = getFacultet();
+        this.facultet = this.getFacultet();
         this.kurs = kurs;
     }
 
@@ -57,7 +57,6 @@ private List<Students> studentsList = new ArrayList<Students>();
             System.out.println(e.getMessage());
         }
         return facultet;
-
 
     }
     public T getId(){
