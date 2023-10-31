@@ -29,12 +29,12 @@ public class Main {
         }
 
 
-        List<Students> studentsList = new ArrayList<Students>();
+        List<Students> studentsList = new ArrayList<>();
         Students students = new Students();
 
         Random rd = new Random();
-        for (Integer i = 1; i <= 20; i++) {
-            studentsList.add(new Students<Integer>(01, rd.nextInt(25) + 18, rd.nextInt(5) + 1));
+        for (int i = 1; i <= 20; i++) {
+            studentsList.add(new Students<String>("01", rd.nextInt(25) + 18, rd.nextInt(5) + 1));
         }
         for (Students x : studentsList)
             System.out.println(x.getName() + " " + x.getFacultet() + " " + x.getId() + " " + x.getAge() + " " + x.getKurs());

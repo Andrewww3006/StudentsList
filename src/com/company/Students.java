@@ -18,15 +18,41 @@ private List<Students> studentsList = new ArrayList<Students>();
   Students(){}
 
 
+
      Students(T id, int age, int kurs) {
         this.id = id;
-        this.name = null;
+        this.name = getRandomeName();
         this.age = age;
         this.facultet = this.getFacultet();
         this.kurs = kurs;
     }
 
+    public T getId(){
+        return id;
+    }
+    public int getAge(){
+        return age;
+    }
+    public int getKurs(){
+        return kurs;
+    }
+
+    public void setStudentsList(List<Students> studentsList) {
+        this.studentsList = studentsList;
+    }
+    public List<Students> getStudentsList()
+    {return studentsList;}
+
+    public void printStudentsist()
+    {
+        for(Students x: studentsList)
+            System.out.println(x.getName()+" "+ x.getId() + x.getFacultet() +x.getAge());
+    }
     public String getName() {
+        return name;
+    }
+
+    public String getRandomeName() {
         String name = null;
         Random r = new Random();
         try {
@@ -59,27 +85,7 @@ private List<Students> studentsList = new ArrayList<Students>();
         return facultet;
 
     }
-    public T getId(){
-      return id;
-    }
-    public int getAge(){
-      return age;
-    }
-    public int getKurs(){
-      return kurs;
-    }
 
-    public void setStudentsList(List<Students> studentsList) {
-        this.studentsList = studentsList;
-    }
-    public List<Students> getStudentsList()
-    {return studentsList;}
-
-    public void printStudentsist()
-    {
-        for(Students x: studentsList)
-            System.out.println(x.getName()+" "+ x.getId() + x.getFacultet() +x.getAge());
-    }
 }
 
 
