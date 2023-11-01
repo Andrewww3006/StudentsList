@@ -10,10 +10,27 @@ public class Main {
         // write your code here
         try {
             FileWriter fileWriter = new FileWriter("Students.txt");
-            fileWriter.write("Ivanov\nPetrov\nSidorov\nZaycev\n" +
-                    "Mihalev\nPupkin\nMalkin\nBabkin\nVovkin\nGrishkin\n" +
-                    "Titov\nTihonov\nMostovoy\nKarpin\nVolosov\nDenisov\n" +
-                    "Zugano\nPehov\nStalin\nCvetkov");
+            fileWriter.write("""
+                    Ivanov
+                    Petrov
+                    Sidorov
+                    Zaycev
+                    Mihalev
+                    Pupkin
+                    Malkin
+                    Babkin
+                    Vovkin
+                    Grishkin
+                    Titov
+                    Tihonov
+                    Mostovoy
+                    Karpin
+                    Volosov
+                    Denisov
+                    Zugano
+                    Pehov
+                    Stalin
+                    Cvetkov""");
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,20 +47,15 @@ public class Main {
 
 
         List<Students> studentsList = new ArrayList<>();
-        Students students = new Students();
 
         Random rd = new Random();
         for (int i = 1; i <= 20; i++) {
-            studentsList.add(new Students<String>("01", rd.nextInt(25) + 18, rd.nextInt(5) + 1));
+            studentsList.add(new Students<Integer>(i, rd.nextInt(25) + 18, rd.nextInt(5) + 1));
         }
         for (Students x : studentsList)
             System.out.println(x.getName() + " " + x.getFacultet() + " " + x.getId() + " " + x.getAge() + " " + x.getKurs());
-    //    students.setStudentsList(studentsList);
-        System.out.println();
-        for (Students x : studentsList)
-            System.out.println(x.getName() + " " + x.getFacultet() + " " + x.getId() + " " + x.getAge() + " " + x.getKurs());
-       // students.setStudentsList(studentsList);
-        //students.printStudentsist();
+
+
         Scanner sc = new Scanner(System.in);
         int operation;
         do {
@@ -51,7 +63,6 @@ public class Main {
 
             switch (operation) {
                 case 1:
-
                     Students<Integer> student = new Students<Integer>(studentsList.size() + 1, rd.nextInt(25) + 18, rd.nextInt(5) + 1);
                     studentsList.add(student);
                     System.out.println(student.getName() + " " + student.getFacultet() + " " + student.getId()
@@ -68,8 +79,37 @@ public class Main {
                         }
                     }
                     break;
+
+                case 3:
+                    System.out.println("id?");
+                    Integer id2 = sc.nextInt();
+                    for (Students x : studentsList) {
+                        if (id2 == x.getId()) {
+                            System.out.println("edit:" + x.getName() + " " + x.getId());
+                            int editOperation = sc.nextInt();
+                            switch (editOperation){
+                                case 1:
+                                    String name = sc.next();
+                                    x.setName(name);
+                                    break;
+                                case 2:
+                                    int id3 = sc.nextInt();
+                                    x.setId(id3);
+                                    break;
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                case 4:
+                        Comparator<Students> pcomp = new PersonComparator().thenComparing(new AgeComparator());
+                        studentsList.sort(pcomp);
+                    for (Students x : studentsList)
+                        System.out.println(x.getName() + " " + x.getFacultet() + " " + x.getId() + " " + x.getAge() + " " + x.getKurs());
+                    break;
                 case 6:
-                    //studentsList.printStudentsist();
+                    for (Students x : studentsList)
+                        System.out.println(x.getName() + " " + x.getFacultet() + " " + x.getId() + " " + x.getAge() + " " + x.getKurs());
                     break;
 
 
