@@ -86,7 +86,7 @@ private int kurs;
         Random r = new Random();
         try {
             BufferedReader stringBuffer = new BufferedReader(new FileReader("Facultets.txt"));
-            for(int i = 0; i < r.nextInt(5); i++)
+            for(int i = 1; i < r.nextInt(6) ; i++)
                 stringBuffer.readLine();
             facultet = stringBuffer.readLine();
 
